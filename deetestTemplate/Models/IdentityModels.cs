@@ -1,8 +1,9 @@
-﻿using System.Data.Entity;
+﻿    using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Configuration;
 
 namespace deetestTemplate.Models
 {
@@ -21,8 +22,10 @@ namespace deetestTemplate.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("SQLSERVER_CONNECTION_STRING", throwIfV1Schema: false)
         {
+            //var connectionString = ConfigurationManager.AppSettings.GetValues("SQLSERVER_CONNECTION_STRING");
+            //ConfigurationManager.ConnectionStrings
         }
 
         public static ApplicationDbContext Create()
